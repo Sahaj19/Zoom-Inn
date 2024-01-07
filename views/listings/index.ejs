@@ -1,0 +1,20 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<div class="index_page_main_div">
+  <% for(let listing of allListings) { %>
+  <div class="particular_listing_div" data-id="<%= listing._id %>">
+    <img src="<%= listing.image %>" alt="listing_image" />
+    <p><%= listing.title %></p>
+    <p>&#8377;<%= listing.price.toLocaleString("en-IN") %></p>
+  </div>
+  <% } %>
+</div>
+
+<script>
+  const listings = document.querySelectorAll(".particular_listing_div");
+  listings.forEach((listing) => {
+    listing.addEventListener("click", () => {
+      let id = listing.getAttribute("data-id");
+      window.location.href = "/listings/" + id;
+    });
+  });
+</script>

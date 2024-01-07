@@ -1,0 +1,55 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #d90429;
+}
+
+.navbar_div_one {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar_search_div {
+  flex-basis: 40%;
+}
+
+.navbar_search_div form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar_search_div form input {
+  flex: 1;
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.navbar_search_div form button {
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  margin-left: 0.5rem;
+}
+
+.navbar_div_two {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  font-size: 1.5rem;
+  color: #fff;
+}

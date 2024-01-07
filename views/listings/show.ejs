@@ -1,0 +1,14 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="show_page_main_div">
+  <div class="show_page_img_div">
+    <img src="<%= listing.image %>" alt="listing_img" />
+  </div>
+  <div class="show_page_details_div">
+    <p><%= listing.title %></p>
+    <p><%= listing.description %></p>
+    <p>&#8377;<%= listing.price.toLocaleString("en-IN") %></p>
+    <p><%= listing.location %></p>
+    <p><%= listing.country %></p>
+  </div>
+</div>
