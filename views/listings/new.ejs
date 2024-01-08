@@ -1,0 +1,85 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="add_new_listing_main_div">
+  <form action="/listings" method="post">
+    <!---------------------- title -------------------------->
+    <div class="listing_inputs">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="listing[title]"
+        placeholder="Enter title"
+        autocomplete="off"
+        required
+      />
+    </div>
+
+    <!---------------------- description -------------------------->
+    <div class="listing_inputs">
+      <label for="description">Description</label>
+      <textarea
+        name="listing[description]"
+        id="description"
+        cols="30"
+        rows="5"
+        placeholder="Enter description"
+        autocomplete="off"
+        required
+      ></textarea>
+    </div>
+
+    <!---------------------- image -------------------------->
+    <div class="listing_inputs">
+      <label for="image">Image</label>
+      <input
+        type="text"
+        placeholder="Enter image url/link"
+        id="image"
+        name="listing[image]"
+        autocomplete="off"
+      />
+    </div>
+
+    <!---------------------- price -------------------------->
+    <div class="listing_inputs">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        id="price"
+        name="listing[price]"
+        placeholder="Enter price"
+        autocomplete="off"
+        required
+      />
+    </div>
+
+    <!---------------------- location -------------------------->
+    <div class="listing_inputs">
+      <label for="location">Location</label>
+      <input
+        type="text"
+        name="listing[location]"
+        id="location"
+        placeholder="Enter location"
+        autocomplete="off"
+        required
+      />
+    </div>
+
+    <!---------------------- country -------------------------->
+    <div class="listing_inputs">
+      <label for="country">Country</label>
+      <input
+        type="text"
+        id="country"
+        name="listing[country]"
+        placeholder="Enter country"
+        autocomplete="off"
+        required
+      />
+    </div>
+    <!---------------------- button -------------------------->
+    <button>Add listing</button>
+  </form>
+</div>

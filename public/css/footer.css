@@ -1,5 +1,5 @@
 .footer {
-    background-color: #d90429;
+    background-color: tomato;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -7,6 +7,6 @@
 }
 
 .footer a {
-    color: #fff;
+    color: #000;
     font-size: 1.5rem;
 }

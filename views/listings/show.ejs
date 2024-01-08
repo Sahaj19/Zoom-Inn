@@ -5,10 +5,18 @@
     <img src="<%= listing.image %>" alt="listing_img" />
   </div>
   <div class="show_page_details_div">
-    <p><%= listing.title %></p>
-    <p><%= listing.description %></p>
-    <p>&#8377;<%= listing.price.toLocaleString("en-IN") %></p>
-    <p><%= listing.location %></p>
-    <p><%= listing.country %></p>
+    <p><b>Title : </b><%= listing.title %></p>
+    <p><b>Description : </b><%= listing.description %></p>
+    <p><b>Price : </b>&#8377;<%= listing.price.toLocaleString("en-IN") %></p>
+    <p><b>Location : </b><%= listing.location %></p>
+    <p><b>Country : </b><%= listing.country %></p>
+  </div>
+  <div class="edit_delete_btns_div">
+    <form action="/listings/<%= listing._id %>/edit" method="get">
+      <button>Edit Listing</button>
+    </form>
+    <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
+      <button>Delete Listing</button>
+    </form>
   </div>
 </div>

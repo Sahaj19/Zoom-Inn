@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background-color: #d90429;
+  background-color: tomato;
 }
 
 .navbar_div_one {
@@ -29,6 +29,7 @@
   border: none;
   border-radius: 10px;
   padding: 0.5rem;
+  background-color: #fff;
 }
 
 .navbar_search_div form button {
@@ -38,7 +39,7 @@
   border-radius: 10px;
   padding: 0.5rem;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #faf5ee;
   color: #000;
   margin-left: 0.5rem;
 }
@@ -51,5 +52,5 @@
 
 .navbar a {
   font-size: 1.5rem;
-  color: #fff;
+  color: #000;
 }
