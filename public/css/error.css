@@ -1,0 +1,14 @@
+.error_main_div {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error_msg {
+    background-color: steelblue;
+    color: #fff;
+    padding: 5rem;
+    font-size: 2rem;
+    border-radius: 10px;
+}
