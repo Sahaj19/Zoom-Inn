@@ -17,25 +17,25 @@
 .listing_inputs label {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #fff;
+    color: #000;
 }
 
 .listing_inputs input ,
 .listing_inputs textarea {
     font-size: 1rem;
-    outline: none;
-    border: none;
     padding: 1rem;
     width: 100%;
 }
 
+
 .add_new_listing_main_div form button {
-    outline: none;
-    background-color: transparent;
-    font-size: 1rem;
-    border: none;
-    background-color: #fff;
-    color: #000;
+    width: 100%;
+    background-color: steelblue;
+    font-size: 1.5rem;
+    color: #fff;
     padding: 1rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
     cursor: pointer;
 }

@@ -12,9 +12,8 @@ body {
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     scroll-behavior: smooth;
-    background-color: #000;
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }

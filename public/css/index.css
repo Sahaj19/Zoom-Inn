@@ -9,15 +9,22 @@
     gap: 2rem;
 }
 
-.particular_listing_div img {
+.particular_listing_div {
     width: 350px;
+}
+
+.particular_listing_div img {
+    width: 100%;
     height: 350px;
     border-radius: 10px;
 }
 
 .particular_listing_div p {
     font-size: 1.25rem;
-    color: #fff;
+    color: #000;
+    margin: 0;
+    word-break: break-all !important;
+    word-wrap: break-word !important;
 }
 
 .particular_listing_div:hover {

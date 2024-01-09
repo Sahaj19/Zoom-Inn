@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  background-color: tomato;
+  padding: 1rem !important;
+  background-color: steelblue;
 }
 
 .navbar_div_one {
@@ -22,27 +22,7 @@
   justify-content: space-between;
 }
 
-.navbar_search_div form input {
-  flex: 1;
-  font-size: 1.5rem;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  padding: 0.5rem;
-  background-color: #fff;
-}
 
-.navbar_search_div form button {
-  font-size: 1.5rem;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  padding: 0.5rem;
-  cursor: pointer;
-  background-color: #faf5ee;
-  color: #000;
-  margin-left: 0.5rem;
-}
 
 .navbar_div_two {
   flex-basis: 20%;
@@ -52,5 +32,5 @@
 
 .navbar a {
   font-size: 1.5rem;
-  color: #000;
+  color: #fff;
 }

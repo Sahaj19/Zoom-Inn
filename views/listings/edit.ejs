@@ -1,14 +1,22 @@
 <% layout("layouts/boilerplate.ejs") %>
 
 <div class="add_new_listing_main_div">
-  <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
+  <form
+    action="/listings/<%= listing._id %>?_method=PUT"
+    method="post"
+    novalidate
+    class="needs-validation"
+  >
     <!---------------------- title -------------------------->
     <div class="listing_inputs">
-      <label for="title">Title</label>
+      <label for="title" class="form-label">Title</label>
       <input
         type="text"
         id="title"
         name="listing[title]"
+        minlength="10"
+        maxlength="50"
+        class="form-control"
         value="<%= listing.title %>"
         placeholder="Enter title"
         autocomplete="off"
@@ -18,13 +26,15 @@
 
     <!---------------------- description -------------------------->
     <div class="listing_inputs">
-      <label for="description">Description</label>
+      <label for="description" class="form-label">Description</label>
       <textarea
         name="listing[description]"
         id="description"
+        minlength="50"
         cols="30"
         rows="5"
         placeholder="Enter description"
+        class="form-control"
         autocomplete="off"
         required
       >
@@ -34,12 +44,13 @@
 
     <!---------------------- image -------------------------->
     <div class="listing_inputs">
-      <label for="image">Image</label>
+      <label for="image" class="form-label">Image</label>
       <input
         type="text"
         placeholder="Enter image url/link"
         id="image"
         name="listing[image]"
+        class="form-control"
         value="<%= listing.image %>"
         autocomplete="off"
       />
@@ -47,7 +58,7 @@
 
     <!---------------------- price -------------------------->
     <div class="listing_inputs">
-      <label for="price">Price</label>
+      <label for="price" class="form-label">Price</label>
       <input
         type="number"
         id="price"
@@ -55,16 +66,19 @@
         value="<%= listing.price %>"
         placeholder="Enter price"
         autocomplete="off"
+        class="form-control"
         required
       />
     </div>
 
     <!---------------------- location -------------------------->
     <div class="listing_inputs">
-      <label for="location">Location</label>
+      <label for="location" class="form-label">Location</label>
       <input
         type="text"
         name="listing[location]"
+        class="form-control"
+        maxlength="50"
         value="<%= listing.location %>"
         id="location"
         placeholder="Enter location"
@@ -75,12 +89,14 @@
 
     <!---------------------- country -------------------------->
     <div class="listing_inputs">
-      <label for="country">Country</label>
+      <label for="country" class="form-label">Country</label>
       <input
         type="text"
         id="country"
         name="listing[country]"
         value="<%= listing.country %>"
+        class="form-control"
+        maxlength="50"
         placeholder="Enter country"
         autocomplete="off"
         required
