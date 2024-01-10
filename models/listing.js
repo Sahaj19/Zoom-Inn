@@ -32,6 +32,12 @@ const listingSchema = new Schema({
     type: String,
     require: true,
   },
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

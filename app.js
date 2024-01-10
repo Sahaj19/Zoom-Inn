@@ -5,10 +5,13 @@ const ejs = require("ejs");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
+
+//models
 const Listing = require("./models/listing.js");
+const Review = require("./models/review.js");
 
 //utilities
-const { listingSchema } = require("./utils/SchemaValidation.js");
+const { listingSchema, reviewSchema } = require("./utils/SchemaValidation.js");
 const ExpressError = require("./utils/ExpressError.js");
 const wrapAsync = require("./utils/WrapAsync.js");
 
@@ -35,12 +38,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//(server-side form validation)
+//(server-side listing form validation)
 const validateListing = (req, res, next) => {
   const { error } = listingSchema.validate(req.body);
   if (error) {
     const errorMsg = error.details[0].message;
-    return res.send(errorMsg);
+    return next(new ExpressError(400, errorMsg));
+  }
+  next();
+};
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(server-side review form validation)
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
+  if (error) {
+    const errorMsg = error.details[0].message;
+    return next(new ExpressError(400, errorMsg));
   }
   next();
 };
@@ -132,6 +146,23 @@ app.delete(
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
+  })
+);
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(review post route)
+app.post(
+  "/listings/:id/reviews",
+  validateReview,
+  wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    let listing = await Listing.findById(id);
+    let newReview = new Review(req.body.review);
+
+    listing.reviews.push(newReview);
+    await newReview.save();
+    await listing.save();
+    res.redirect(`/listings/${id}`);
   })
 );
 

@@ -46,3 +46,44 @@
     padding: 1rem;
     cursor: pointer;
 }
+
+
+/********************* review form styling ***********************/
+.review_form_div p {
+    font-size: 3.5rem;
+    margin: 3rem 0;
+    text-align: center;
+    background-color: steelblue;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.review_form_div form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.review_form_div form input {
+    width: 20%;
+    outline: none;
+    padding: 0.5rem;
+
+}
+
+.review_form_div form textarea {
+    margin: 1rem 0;
+    padding: 1rem;
+    outline: none;
+}
+
+.review_form_div form button {
+    padding: 1rem;
+    background-color: steelblue;
+    font-size: 1rem;
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+    border: none;
+    width: 20%;
+}

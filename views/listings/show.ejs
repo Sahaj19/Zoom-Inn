@@ -1,9 +1,11 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
 <div class="show_page_main_div">
+  <!------------------------------ listing information ------------------------------->
   <div class="show_page_img_div">
     <img src="<%= listing.image %>" alt="listing_img" />
   </div>
+
   <div class="show_page_details_div">
     <p><b>Title : </b><%= listing.title %></p>
     <p><b>Description : </b><%= listing.description %></p>
@@ -11,12 +13,46 @@
     <p><b>Location : </b><%= listing.location %></p>
     <p><b>Country : </b><%= listing.country %></p>
   </div>
+
   <div class="edit_delete_btns_div">
     <form action="/listings/<%= listing._id %>/edit" method="get">
       <button>Edit Listing</button>
     </form>
     <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
       <button>Delete Listing</button>
+    </form>
+  </div>
+
+  <!------------------------------ review form ------------------------------->
+  <div class="review_form_div">
+    <p>Leave a Review</p>
+    <form
+      action="/listings/<%= listing._id %>/reviews"
+      method="post"
+      novalidate
+      class="needs-validation"
+    >
+      <input
+        type="number"
+        min="1"
+        max="5"
+        name="review[rating]"
+        autocomplete="off"
+        class="form-control"
+        required
+      />
+
+      <textarea
+        name="review[comment]"
+        cols="30"
+        rows="10"
+        autocomplete="off"
+        minlength="4"
+        class="form-control"
+        required
+      ></textarea>
+
+      <button type="submit">Submit review</button>
     </form>
   </div>
 </div>
