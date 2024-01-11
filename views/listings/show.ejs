@@ -55,4 +55,20 @@
       <button type="submit">Submit review</button>
     </form>
   </div>
+
+  <!------------------------------ actual reviews ------------------------------->
+  <div class="actual_reviews_div">
+    <% listing.reviews.forEach((review) => { %>
+    <div class="individual_review">
+      <p><b>Rating : </b><%= review.rating %></p>
+      <p><b>Comment : </b><%= review.comment %></p>
+      <form
+        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+        method="post"
+      >
+        <button type="submit">Delete review</button>
+      </form>
+    </div>
+    <% }) %>
+  </div>
 </div>

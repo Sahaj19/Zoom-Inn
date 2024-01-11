@@ -87,3 +87,29 @@
     border: none;
     width: 20%;
 }
+
+/********************* actual reviews styling ***********************/
+.actual_reviews_div {
+    margin: 2rem 0;
+}
+
+.individual_review {
+    border: 2px solid #000;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.individual_review p {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.individual_review form button {
+    background-color: red;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 10px;
+}

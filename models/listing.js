@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Review = require("./review.js");
 const { Schema } = mongoose;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -38,6 +39,15 @@ const listingSchema = new Schema({
       ref: "Review",
     },
   ],
+});
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(listing schema post middleware)
+//(all reviews associated with any particular listing will get deleted , in case any listing got deleted!)
+listingSchema.post("findOneAndDelete", async (listing) => {
+  if (listing.reviews.length) {
+    await Review.deleteMany({ _id: { $in: listing.reviews } });
+  }
 });
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
