@@ -1,0 +1,35 @@
+.edit_review_form {
+    min-height: 100vh;
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
+.edit_review_form form {
+    width: 100%;
+}
+
+
+.edit_review_form form label {
+    font-size: 1.5rem;
+}
+
+.edit_review_form form input , 
+.edit_review_form form textarea {
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.review_editing_div {
+    margin-bottom: 2rem;
+}
+
+.review_editing_div button {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: steelblue;
+    color: #fff;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}

@@ -104,6 +104,10 @@
     word-break: break-all;
 }
 
+.individual_review form {
+    margin-bottom: 0.25rem;
+}
+
 .individual_review form button {
     background-color: red;
     padding: 0.5rem;
@@ -113,3 +117,4 @@
     font-size: 12px;
     border-radius: 10px;
 }
+

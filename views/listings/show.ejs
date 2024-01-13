@@ -62,12 +62,21 @@
     <div class="individual_review">
       <p><b>Rating : </b><%= review.rating %></p>
       <p><b>Comment : </b><%= review.comment %></p>
+
+      <!------------------- review edit and delete buttons --------------------------->
       <form
         action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
         method="post"
       >
         <button type="submit">Delete review</button>
       </form>
+      <form
+        action="/listings/<%= listing._id %>/reviews/<%= review._id %>/edit"
+        method="get"
+      >
+        <button type="submit">Edit review</button>
+      </form>
+      <!-------------------- review edit and delete buttons -------------------------->
     </div>
     <% }) %>
   </div>

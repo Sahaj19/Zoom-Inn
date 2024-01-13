@@ -35,6 +35,29 @@ router.post(
 );
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(review edit route form)
+router.get("/:reviewId/edit", async (req, res) => {
+  const { id, reviewId } = req.params;
+  const listing = await Listing.findById(id);
+  const review = await Review.findById(reviewId);
+  res.render("reviews/edit.ejs", { review, listing });
+});
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(review edit update route )
+router.put(
+  "/:reviewId",
+  validateReview,
+  wrapAsync(async (req, res) => {
+    const { id, reviewId } = req.params;
+    await Review.findByIdAndUpdate(reviewId, {
+      ...req.body.review,
+    });
+    res.redirect(`/listings/${id}`);
+  })
+);
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(review delete route)
 router.delete(
   "/:reviewId",

@@ -1,0 +1,38 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="edit_review_form">
+  <form
+    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=PUT"
+    method="post"
+    novalidate
+    class="needs-validation"
+  >
+    <div class="review_editing_div">
+      <label for="rating" class="form-label">Rating</label>
+      <input
+        type="number"
+        class="form-control"
+        name="review[rating]"
+        value="<%= review.rating %>"
+        required
+      />
+    </div>
+
+    <div class="review_editing_div">
+      <label for="comment" class="form-label">Comment</label>
+      <textarea
+        type="text"
+        class="form-control"
+        name="review[comment]"
+        rows="10"
+        required
+      >
+<%= review.comment %></textarea
+      >
+    </div>
+
+    <div class="review_editing_div">
+      <button>Update my review</button>
+    </div>
+  </form>
+</div>
