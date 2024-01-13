@@ -2,19 +2,8 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 const ExpressError = require("../utils/ExpressError.js");
 const wrapAsync = require("../utils/WrapAsync.js");
-const { listingSchema } = require("../utils/SchemaValidation.js");
 const Listing = require("../models/listing.js");
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//(server-side listing form validation)
-const validateListing = (req, res, next) => {
-  const { error } = listingSchema.validate(req.body);
-  if (error) {
-    const errorMsg = error.details[0].message;
-    return next(new ExpressError(400, errorMsg));
-  }
-  next();
-};
+const { validateListing } = require("../utils/middlewares.js");
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(index route)

@@ -19,7 +19,7 @@
       <button>Edit Listing</button>
     </form>
     <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
-      <button>Delete Listing</button>
+      <button class="deleteListingConfirm">Delete Listing</button>
     </form>
   </div>
 
@@ -68,7 +68,7 @@
         action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
         method="post"
       >
-        <button type="submit">Delete review</button>
+        <button type="submit" class="deleteReviewConfirm">Delete review</button>
       </form>
       <form
         action="/listings/<%= listing._id %>/reviews/<%= review._id %>/edit"
@@ -81,3 +81,6 @@
     <% }) %>
   </div>
 </div>
+
+<!------------------------------ listing deletion confirmation popup------------------------------>
+<script src="/js/deletionHandler.js"></script>
