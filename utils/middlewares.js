@@ -24,4 +24,14 @@ const validateReview = (req, res, next) => {
 };
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-module.exports = { validateListing, validateReview };
+//(your should be logged in, in order to post listing/reviews)
+const isLoggedIn = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    req.flash("error", "Log in first!");
+    return res.redirect("/login");
+  }
+  next();
+};
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+module.exports = { validateListing, validateReview, isLoggedIn };

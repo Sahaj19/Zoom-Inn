@@ -1,0 +1,30 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="signup_form_div">
+  <form action="/login" method="post" class="needs-validation" novalidate>
+    <div class="signup_particular_div">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        placeholder="Enter your name"
+        name="username"
+        class="form-control"
+        autocomplete="off"
+        required
+      />
+    </div>
+
+    <div class="signup_particular_div">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Enter strong password"
+        autocomplete="off"
+        required
+      />
+    </div>
+    <button>LogIn</button>
+  </form>
+</div>

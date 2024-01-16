@@ -4,8 +4,14 @@
     <a href="/listings/new">Add new listing</a>
   </div>
   <div class="navbar_div_two">
+    <% if(!currentUser) { %>
     <a href="/signup">Sign Up</a>
     <a href="/login">Log In</a>
+    <% } %>
+
+    <!------------------------------------>
+    <% if(currentUser) { %>
     <a href="/logout">Log Out</a>
+    <% } %>
   </div>
 </div>

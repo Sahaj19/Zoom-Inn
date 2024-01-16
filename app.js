@@ -11,9 +11,15 @@ const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 
+//authentication setup
+const User = require("./models/user.js");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
 //routers
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(mongo configurations)
@@ -54,10 +60,19 @@ app.use(session(sessionOptions));
 app.use(flash());
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(passport authentication)
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(locals)
 app.use((req, res, next) => {
   res.locals.successMsg = req.flash("success");
   res.locals.failureMsg = req.flash("error");
+  res.locals.currentUser = req.user;
   next();
 });
 
@@ -71,6 +86,7 @@ app.get("/", (req, res) => {
 //(routing)
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(id error handler)
@@ -79,16 +95,6 @@ app.use((err, req, res, next) => {
     return next(new ExpressError(400, "Invalid Id"));
   }
   next(err);
-});
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//(error handler)
-app.use((err, req, res, next) => {
-  if (err.message.includes("Cannot read properties of null")) {
-    return next(new ExpressError(400, "Listing/review does not exist"));
-  } else {
-    next();
-  }
 });
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
