@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,6 +8,8 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 //routers
 const listingRouter = require("./routes/listing.js");
@@ -34,6 +38,30 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(maintaining sessions)
+const sessionOptions = {
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    expires: Date.now() + 15 * 24 * 60 * 60 * 1000,
+    maxAge: 15 * 24 * 60 * 60 * 1000,
+  },
+};
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(locals)
+app.use((req, res, next) => {
+  res.locals.successMsg = req.flash("success");
+  res.locals.failureMsg = req.flash("error");
+  next();
+});
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(home route)
 app.get("/", (req, res) => {
   res.render("listings/home.ejs");
@@ -51,6 +79,16 @@ app.use((err, req, res, next) => {
     return next(new ExpressError(400, "Invalid Id"));
   }
   next(err);
+});
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(error handler)
+app.use((err, req, res, next) => {
+  if (err.message.includes("Cannot read properties of null")) {
+    return next(new ExpressError(400, "Listing/review does not exist"));
+  } else {
+    next();
+  }
 });
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

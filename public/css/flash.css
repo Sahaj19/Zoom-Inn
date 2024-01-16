@@ -1,0 +1,16 @@
+.flash_message_div {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: steelblue;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flash_message_div p {
+    margin: 0;
+}
