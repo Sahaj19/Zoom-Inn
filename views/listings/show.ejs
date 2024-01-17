@@ -1,4 +1,9 @@
-<% layout("/layouts/boilerplate.ejs") %>
+<% layout("layouts/boilerplate.ejs") %>
+
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  const listing = <%- JSON.stringify(listing) %>;
+</script>
 
 <div class="show_page_main_div">
   <!------------------------------ listing information ------------------------------->
@@ -95,7 +100,13 @@
     </div>
     <% }) %>
   </div>
+  <!-------------------- mapbox div and map functionality-------------------------->
+  <h2>where you'll be!</h2>
+  <div id="map"></div>
 </div>
 
 <!------------------------------ listing deletion confirmation popup------------------------------>
 <script src="/js/deletionHandler.js"></script>
+
+<!-------------------- mapbox script functionality-------------------------->
+<script src="/js/map.js"></script>

@@ -10,6 +10,12 @@ const {
 } = require("../utils/middlewares.js");
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//(mapbox configurations)
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
+const mapToken = process.env.MAP_TOKEN;
+const geocodingClient = mbxGeocoding({ accessToken: mapToken });
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(index route)
 router.get(
   "/",
@@ -32,9 +38,19 @@ router.post(
   isLoggedIn,
   validateListing,
   wrapAsync(async (req, res) => {
+    let response = await geocodingClient
+      .forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1,
+      })
+      .send();
+
     let newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
-    await newListing.save();
+    newListing.geometry = response.body.features[0].geometry;
+    let savedListing = await newListing.save();
+    console.log(savedListing);
+
     req.flash("success", "New Listng created successfully!");
     res.redirect("/listings");
   })
@@ -87,7 +103,7 @@ router.put(
     let { id } = req.params;
     let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
     await listing.save();
-    req.flash("success", "Listng updated successfully!");
+    req.flash("success", "Listing updated successfully!");
     res.redirect(`/listings/${id}`);
   })
 );
@@ -101,7 +117,7 @@ router.delete(
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
-    req.flash("success", "Listng deleted successfully!");
+    req.flash("success", "Listing deleted successfully!");
     res.redirect("/listings");
   })
 );
