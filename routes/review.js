@@ -3,7 +3,11 @@ const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/WrapAsync.js");
 const Review = require("../models/review.js");
 const Listing = require("../models/listing.js");
-const { validateReview, isLoggedIn } = require("../utils/middlewares.js");
+const {
+  validateReview,
+  isLoggedIn,
+  isReviewAuthor,
+} = require("../utils/middlewares.js");
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(review post route)
@@ -15,6 +19,7 @@ router.post(
     let { id } = req.params;
     let listing = await Listing.findById(id);
     let newReview = new Review(req.body.review);
+    newReview.author = req.user._id;
 
     listing.reviews.push(newReview);
     await newReview.save();
@@ -27,7 +32,7 @@ router.post(
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(review edit route form)
-router.get("/:reviewId/edit", isLoggedIn, async (req, res) => {
+router.get("/:reviewId/edit", isLoggedIn, isReviewAuthor, async (req, res) => {
   const { id, reviewId } = req.params;
   const listing = await Listing.findById(id);
   const review = await Review.findById(reviewId);
@@ -39,6 +44,7 @@ router.get("/:reviewId/edit", isLoggedIn, async (req, res) => {
 router.put(
   "/:reviewId",
   isLoggedIn,
+  isReviewAuthor,
   validateReview,
   wrapAsync(async (req, res) => {
     const { id, reviewId } = req.params;
@@ -55,6 +61,7 @@ router.put(
 router.delete(
   "/:reviewId",
   isLoggedIn,
+  isReviewAuthor,
   wrapAsync(async (req, res) => {
     let { id, reviewId } = req.params;
     await Review.findByIdAndDelete(reviewId);

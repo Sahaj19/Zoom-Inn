@@ -7,12 +7,15 @@
   </div>
 
   <div class="show_page_details_div">
+    <p><b>Owner : </b><%= listing.owner.username %></p>
     <p><b>Title : </b><%= listing.title %></p>
     <p><b>Description : </b><%= listing.description %></p>
     <p><b>Price : </b>&#8377;<%= listing.price %></p>
     <p><b>Location : </b><%= listing.location %></p>
     <p><b>Country : </b><%= listing.country %></p>
   </div>
+
+  <% if(currentUser && currentUser._id.equals(listing.owner._id)) { %>
 
   <div class="edit_delete_btns_div">
     <form action="/listings/<%= listing._id %>/edit" method="get">
@@ -23,7 +26,10 @@
     </form>
   </div>
 
+  <% } %>
   <!------------------------------ review form ------------------------------->
+  <% if(currentUser) { %>
+
   <div class="review_form_div">
     <p>Leave a Review</p>
     <form
@@ -56,14 +62,20 @@
     </form>
   </div>
 
+  <% } %>
+
   <!------------------------------ actual reviews ------------------------------->
   <div class="actual_reviews_div">
     <% listing.reviews.forEach((review) => { %>
     <div class="individual_review">
+      <p><b>Author : </b><%= review.author.username %></p>
       <p><b>Rating : </b><%= review.rating %></p>
       <p><b>Comment : </b><%= review.comment %></p>
 
       <!------------------- review edit and delete buttons --------------------------->
+
+      <% if(currentUser && currentUser._id.equals(review.author._id)) { %>
+
       <form
         action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
         method="post"
@@ -76,6 +88,9 @@
       >
         <button type="submit">Edit review</button>
       </form>
+
+      <% } %>
+
       <!-------------------- review edit and delete buttons -------------------------->
     </div>
     <% }) %>

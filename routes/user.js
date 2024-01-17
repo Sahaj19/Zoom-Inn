@@ -4,6 +4,7 @@ const wrapAsync = require("../utils/WrapAsync.js");
 const User = require("../models/user.js");
 const passport = require("passport");
 const ExpressError = require("../utils/ExpressError.js");
+const { saveRedirectUrl } = require("../utils/middlewares.js");
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //(signup form)
@@ -45,13 +46,15 @@ router.get("/login", (req, res) => {
 //(post login route)
 router.post(
   "/login",
+  saveRedirectUrl,
   passport.authenticate("local", {
     failureRedirect: "/login",
     failureFlash: true,
   }),
   async (req, res) => {
     req.flash("success", "Welcome to Zoom-Inn");
-    res.redirect("/listings");
+    let redirectUrl = res.locals.url || "/listings";
+    res.redirect(redirectUrl);
   }
 );
 
