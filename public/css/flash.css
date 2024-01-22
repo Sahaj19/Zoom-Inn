@@ -3,7 +3,7 @@
     max-width: 600px;
     margin: 2rem auto;
     padding: 1rem;
-    background-color: steelblue;
+    background-color: #000;
     color: #fff;
     border-radius: 10px;
     display: flex;
@@ -13,4 +13,14 @@
 
 .flash_message_div p {
     margin: 0;
+}
+
+
+/***************************** responsive css layout *******************************/
+@media(max-width : 650px) {
+    .flash_message_div {
+        max-width: 300px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
 }

@@ -1,5 +1,5 @@
 .footer {
-    background-color: steelblue;
+    background-color: #000;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -9,4 +9,12 @@
 .footer a {
     color: #fff;
     font-size: 1.5rem;
+}
+
+
+/***************************** responsive layout css *****************************/
+@media(max-width : 550px) {
+    .footer {
+        flex-direction: column;
+    }
 }

@@ -3,13 +3,14 @@
     max-width: 1200px;
     margin: 1rem auto;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
-    border: 2px solid #000;
+    gap: 1.5rem;
 }
 
 .particular_listing_div {
     width: 350px;
+    height: 450px;
 }
 
 .particular_listing_div img {
@@ -28,4 +29,18 @@
 
 .particular_listing_div:hover {
     cursor: pointer;
+}
+
+
+/************************** responsive css layout *****************************/
+@media(max-width : 1220px) {
+    .index_page_main_div {
+        max-width: 1000px;
+    }
+}
+
+@media(max-width:375px) {
+    .particular_listing_div {
+        width: 300px;
+    }
 }

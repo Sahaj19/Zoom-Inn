@@ -1,35 +1,68 @@
 .signup_form_div {
-    min-height: 100vh;
-    max-width: 600px;
-    margin: 2rem auto;
+  min-height: 100vh;
+  max-width: 600px;
+  margin: 2rem auto;
 }
 
 .signup_form_div form {
-    width: 100%;
+  width: 100%;
 }
 
 .signup_particular_div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 .signup_particular_div label {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .signup_particular_div input {
-    padding: 1rem;
-    font-size: 1.25rem;
+  padding: 1rem;
+  font-size: 1.25rem;
 }
 
 .signup_form_div button {
-    width: 100%;
-    font-size: 2rem;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    color: #fff;
-    background-color: steelblue;
-    padding: 1rem;
+  width: 100%;
+  font-size: 2rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  color: #fff;
+  background-color: #000;
+  padding: 1rem;
+}
+
+/***************************** responsive layout css *****************************/
+@media (max-width: 700px) {
+  .signup_form_div {
+    max-width: 400px;
+  }
+
+  .signup_particular_div label {
+    font-size: 1.25rem;
+  }
+
+  .signup_particular_div input {
+    font-size: 1rem;
+  }
+
+  .signup_form_div button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .signup_form_div {
+    max-width: 290px;
+  }
+
+  .signup_particular_div input {
+    padding: 0.5rem;
+  }
+
+  .signup_form_div button {
+    font-size: 1rem;
+  }
 }

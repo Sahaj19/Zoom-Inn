@@ -1,41 +1,68 @@
 .add_new_listing_main_div {
-    min-height: 100vh;
-    max-width: 800px;
-    margin: 1rem auto;
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 1rem auto;
 }
 
 .add_new_listing_main_div form {
-    width: 100%;
+  width: 100%;
 }
 
 .listing_inputs {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .listing_inputs label {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #000;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #000;
 }
 
-.listing_inputs input ,
+.listing_inputs input,
 .listing_inputs textarea {
-    font-size: 1rem;
-    padding: 1rem;
-    width: 100%;
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100%;
 }
-
 
 .add_new_listing_main_div form button {
-    width: 100%;
-    background-color: steelblue;
-    font-size: 1.5rem;
-    color: #fff;
-    padding: 1rem;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
+  width: 100%;
+  background-color: #000;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+/************************** responsive css layout ******************************/
+@media (max-width: 900px) {
+  .add_new_listing_main_div {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 700px) {
+  .add_new_listing_main_div {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  .add_new_listing_main_div {
+    max-width: 300px;
+  }
+
+  .listing_inputs label {
+    font-size: 1.25rem;
+  }
+
+  .add_new_listing_main_div form button {
+    font-size: 1.25rem;
+  }
 }

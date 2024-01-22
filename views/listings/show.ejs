@@ -82,16 +82,17 @@
       <% if(currentUser && currentUser._id.equals(review.author._id)) { %>
 
       <form
-        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-        method="post"
-      >
-        <button type="submit" class="deleteReviewConfirm">Delete review</button>
-      </form>
-      <form
         action="/listings/<%= listing._id %>/reviews/<%= review._id %>/edit"
         method="get"
       >
         <button type="submit">Edit review</button>
+      </form>
+
+      <form
+        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+        method="post"
+      >
+        <button type="submit" class="deleteReviewConfirm">Delete review</button>
       </form>
 
       <% } %>

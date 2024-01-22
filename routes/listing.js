@@ -48,8 +48,7 @@ router.post(
     let newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
     newListing.geometry = response.body.features[0].geometry;
-    let savedListing = await newListing.save();
-    console.log(savedListing);
+    await newListing.save();
 
     req.flash("success", "New Listng created successfully!");
     res.redirect("/listings");

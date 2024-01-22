@@ -27,9 +27,33 @@
     width: 100%;
     font-size: 1.5rem;
     padding: 1rem;
-    background-color: steelblue;
+    background-color: #000;
     color: #fff;
     border-radius: 10px;
     outline: none;
     border: none;
+}
+
+
+/************************** responsive css layout ********************************/
+@media(max-width:800px) {
+    .edit_review_form {
+        max-width: 500px;
+    }
+}
+
+@media(max-width:550px) {
+    .edit_review_form {
+        max-width: 300px;
+    }
+
+    .edit_review_form form label {
+        font-size: 1.25rem;
+    }
+    
+    .edit_review_form form input , 
+    .edit_review_form form textarea,
+    .review_editing_div button  {
+        font-size: 1rem;
+    }
 }

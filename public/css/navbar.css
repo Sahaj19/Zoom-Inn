@@ -1,34 +1,20 @@
 .navbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem !important;
-  background-color: steelblue;
-}
-
-.navbar_div_one {
-  flex-basis: 20%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.navbar_search_div {
-  flex-basis: 40%;
-}
-
-.navbar_search_div form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar_div_two {
-  flex-basis: 20%;
-  display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem 2rem !important;
+  background-color: #000;
 }
 
 .navbar a {
-  font-size: 1.5rem;
   color: #fff;
+  font-size: 1.5rem;
+}
+
+
+/***************************** responsive layout css *****************************/
+@media(max-width : 650px) {
+  .navbar {
+    flex-direction: column;
+  }
 }
